@@ -55,8 +55,8 @@ public class SendReceiveSmsMessagesJavaApplication {
     public @ResponseBody String sendSMS(@RequestParam("recipient") String recipient) {
         Twilio.init(accountSid, authToken);
         com.twilio.rest.api.v2010.account.Message message = com.twilio.rest.api.v2010.account.Message
-            .creator(new com.twilio.type.PhoneNumber(recipient),
-                    new com.twilio.type.PhoneNumber(phoneNumber),
+            .creator(new PhoneNumber(recipient),
+                    new PhoneNumber(phoneNumber),
                     "This is the ship that made the Kessel Run in fourteen parsecs?")
             .create();
 
