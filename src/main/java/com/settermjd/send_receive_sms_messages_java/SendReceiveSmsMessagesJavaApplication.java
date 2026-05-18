@@ -115,7 +115,7 @@ public class SendReceiveSmsMessagesJavaApplication {
         Body smsBody;
         if (requestBody.toLowerCase().equals("never gonna")) {
             Random random = new Random();
-            int index = random.nextInt(0, options.length - 1);
+            int index = random.nextInt(options.length);
             smsBody = new Body.Builder(options[index])
                     .build();
         } else {
