@@ -6,6 +6,8 @@ import com.twilio.twiml.messaging.Body;
 import com.twilio.twiml.messaging.Message;
 import com.twilio.type.PhoneNumber;
 import java.util.Random;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,6 +25,8 @@ public class SendReceiveSmsMessagesJavaApplication {
     private static String accountSid;
     private static String authToken;
     private static String phoneNumber;
+
+    private Logger logger = LogManager.getLogger(SendReceiveSmsMessagesJavaApplication.class);
 
     @Value("${twilio.account_sid}")
     public void setAccountSid(String accountSid)
