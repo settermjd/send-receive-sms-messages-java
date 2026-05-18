@@ -5,7 +5,7 @@ import com.twilio.twiml.MessagingResponse;
 import com.twilio.twiml.messaging.Body;
 import com.twilio.twiml.messaging.Message;
 import com.twilio.type.PhoneNumber;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Value;
@@ -118,8 +118,7 @@ public class SendReceiveSmsMessagesJavaApplication {
     public @ResponseBody String withResponse(@RequestParam("Body") String requestBody) {
         Body smsBody;
         if (requestBody.toLowerCase().equals("never gonna")) {
-            Random random = new Random();
-            int index = random.nextInt(options.length);
+            int index = ThreadLocalRandom.current().nextInt(options.length);
             smsBody = new Body.Builder(options[index])
                     .build();
         } else {
