@@ -119,7 +119,7 @@ public class SendReceiveSmsMessagesJavaApplication {
             MediaType.APPLICATION_FORM_URLENCODED_VALUE }, produces = "application/xml")
     public @ResponseBody String withResponse(@RequestParam("Body") String requestBody) {
         Body smsBody;
-        if (requestBody.toLowerCase().equals("never gonna")) {
+        if (requestBody.equalsIgnoreCase("never gonna")) {
             int index = ThreadLocalRandom.current().nextInt(options.length);
             smsBody = new Body.Builder(options[index])
                     .build();
