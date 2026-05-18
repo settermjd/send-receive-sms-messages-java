@@ -11,21 +11,29 @@
 	<groupId>com.settermjd</groupId>
 	<artifactId>send-receive-sms-messages-java</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name/>
-	<description/>
-	<url/>
+	<name>Send &amp; receive SMS messages with Twilio and Java</name>
+	<description>Learn how to send and receive SMS with Twilio and Rust with this repository. In just a few lines of code, you can see your phone light up sending and receiving SMS with Twilio and Rust.</description>
+	<url>https://github.com/twilio-samples/send-receive-sms-messages-java</url>
 	<licenses>
-		<license/>
+		<license>
+			<name>MIT</name>
+			<url>https://mit-license.org</url>
+			<distribution>repo</distribution>
+		</license>
 	</licenses>
 	<developers>
-		<developer/>
+		<developer>
+			<id>settermjd</id>
+			<name>Matthew Setter</name>
+			<email>matthew@matthewsetter.com</email>
+			<url>http://www.matthewsetter.com</url>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>Australia/Brisbane</timezone>
+		</developer>
 	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
 	<properties>
 		<java.version>25</java.version>
 	</properties>
