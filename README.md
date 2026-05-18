@@ -9,7 +9,7 @@ In just a few lines of code, you can see your phone light up sending and receivi
 
 To run the app locally, you need the following:
 
-- Java 21 or later
+- Java 25 or later
 - [ngrok][ngrok] and a free ngrok account
 - A [Twilio account][twilio_signup] with an active phone number that can send SMS
 - Some command-line/terminal and [Spring][java_spring] experience would be helpful, but it's not necessary
