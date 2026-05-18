@@ -13,7 +13,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -93,7 +92,10 @@ public class SendReceiveSmsMessagesJavaApplication {
      *
      * @see https://www.twilio.com/docs/messaging/twiml/message
      */
-    @RequestMapping(method = RequestMethod.POST, path = "/receive/no-response", produces = "application/xml")
+    @PostMapping(
+        path = "/receive/no-response", 
+        produces = "application/xml"
+    )
     public String noResponse() {
         MessagingResponse twiml = new MessagingResponse.Builder()
                 .build();
