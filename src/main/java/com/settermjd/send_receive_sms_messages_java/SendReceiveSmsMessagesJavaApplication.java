@@ -6,6 +6,7 @@ import com.twilio.twiml.messaging.Body;
 import com.twilio.twiml.messaging.Message;
 import com.twilio.type.PhoneNumber;
 import java.util.Random;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.MediaType;
@@ -15,19 +16,31 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.beans.factory.annotation.Value;
 
 @SpringBootApplication
 @RestController
 public class SendReceiveSmsMessagesJavaApplication {
+    private static String accountSid;
+    private static String authToken;
+    private static String phoneNumber;
+
     @Value("${twilio.account_sid}")
-    private String accountSid;
+    public void setAccountSid(String accountSid)
+    {
+        SendReceiveSmsMessagesJavaApplication.accountSid = accountSid;
+    }
 
     @Value("${twilio.auth_token}")
-    private String authToken;
+    public void setAuthToken(String authToken)
+    {
+        SendReceiveSmsMessagesJavaApplication.authToken = authToken;
+    }
 
     @Value("${twilio.phone_number}")
-    private String phoneNumber;
+    public void setSenderPhoneNumber(String phoneNumber)
+    {
+        SendReceiveSmsMessagesJavaApplication.phoneNumber = phoneNumber;
+    }
 
     private static final String defaultOption = "I just wanna tell you how I'm feeling - Gotta make you understand";
     private static final String[] options = {
@@ -41,6 +54,9 @@ public class SendReceiveSmsMessagesJavaApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SendReceiveSmsMessagesJavaApplication.class, args);
+
+        // Initialise the Twilio client
+        Twilio.init(accountSid, authToken);
     }
 
     /**
@@ -53,7 +69,6 @@ public class SendReceiveSmsMessagesJavaApplication {
         consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}
     )
     public @ResponseBody String sendSMS(@RequestParam("recipient") String recipient) {
-        Twilio.init(accountSid, authToken);
         com.twilio.rest.api.v2010.account.Message message = com.twilio.rest.api.v2010.account.Message
             .creator(new PhoneNumber(recipient),
                     new PhoneNumber(phoneNumber),
